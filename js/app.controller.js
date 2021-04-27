@@ -42,6 +42,7 @@ function addEventListenrs() {
                 console.log('err!!!', err);
             })
     })
+
 }
 
 
@@ -70,19 +71,19 @@ function onSearch(ev) {
 function renderTable() {
     let tableData = '';
     locService.getLocs()
-    .then(locs => {
-        locs.forEach( location => {
-            tableData += 
-            `<tr>
+        .then(locs => {
+            locs.forEach(location => {
+                tableData +=
+                    `<tr>
                 <td>${location.name}</td>
                 <td>${location.lat}</td>
                 <td>${location.lng}</td>
-                <td><button onclick ="onGoLocation()">Go</button></td>
-                <td><button onclick ="onDeleteLocation()">Delete</button></td>
+                <td><button class="btn btn-go" data-name="${location.name}">Go</button></td>
+                <td><button class="btn btn-delete" data-name="${location.name}">Delete</button></td>
             </tr>
             `
-        })
-        let elTbl = `
+            })
+            let elTbl = `
         <table style="float:right">
         <tr>
           <th>Name</th>
@@ -91,15 +92,33 @@ function renderTable() {
         </tr>
         ${tableData}
         </table>`;
-        document.querySelector('.table-container').innerHTML = elTbl; 
-    });
+            document.querySelector('.table-container').innerHTML = elTbl;
+            addClickListener();
+        });
+   
+
 }
 
-function onGoLocation(){
-console.log('aa');
+function addClickListener() {
+    const btnsGo = document.querySelectorAll('.btn-go');
+    btnsGo.forEach((btn)=>{
+        btn.addEventListener('click',onGoLocation);
+    })
+    const btnsDelete = document.querySelectorAll('.btn-delete');
+    btnsDelete.forEach((btn)=>{
+        btn.addEventListener('click',onDeleteLocation);
+    })
 }
 
-function onDeleteLocation(){
-    console.log('bb');
+function onGoLocation(ev) {
+    const nameLocation = ev.target.getAttribute('data-name');
+    const location = locService.getLocation(nameLocation);
+    console.log(location);
+    
+}
 
+function onDeleteLocation(ev) {
+    const nameLocation = ev.target.getAttribute('data-name');
+    const location = locService.getLocation(nameLocation);
+    console.log(location);
 }

@@ -1,7 +1,8 @@
 import { storageService } from './storageService.js'
 export const locService = {
     getLocs,
-    setLocation
+    setLocation,
+    getLocation
 }
 
 
