@@ -42,6 +42,7 @@
 }
 
 .table-container{
+    flex-grow: 1;
     height: 97%;
     border-right: 3px solid rgb(255, 255, 255);
     border-bottom: 3px solid #f39c12;
