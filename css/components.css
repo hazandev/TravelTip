@@ -71,12 +71,52 @@ input[name="search"]::placeholder{
 .tbl{
     width: 100%;
     padding: 1rem;
-    border: 2px solid red;
+
 }
 
-.tbl tr{
-    font-size: 1.5rem;
+.tbl th{
+    font-size: 2rem;
+    color: #333;
+    font-family: 'Noto Sans', sans-serif;
+    padding-top: 2rem;
 }
+
+.tbl th:first-child{
+    border-bottom: 4px solid #f39c12;
+}
+
+.tbl td{
+    font-size: 1.3rem;
+    font-weight: bold;
+    font-family: 'Noto Sans', sans-serif;
+    text-align: center;
+    padding-top: 2rem;
+}
+
+.tbl .btn{
+    font-size: 1.3rem;
+    font-weight: bold;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.tbl .btn-go{
+    border: 2px solid #1e90ff;
+}
+
+.tbl .btn-delete{
+    border: 2px solid #ff4757;
+}
+
+.tbl .btn-go:hover{
+    background: #1e90ff;
+    color: white;
+}
+
+.tbl .btn-delete:hover{
+    background: #ff4757;
+    color: white;
+}
+
 
 
 

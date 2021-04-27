@@ -34,13 +34,13 @@
 }
 
 .map-container{
-    width: 70%;
+    width: 60%;
     height: 100%;
     padding: 1rem;
 }
 
 .table-container{
-    width: 30%;
+    width: 40%;
     height: 100%;
     padding: 1rem;
     border-right: 6px solid #333;

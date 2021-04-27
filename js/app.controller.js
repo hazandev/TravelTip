@@ -18,22 +18,6 @@ function onInit() {
 function addEventListenrs() {
     document.querySelector('.search-container').addEventListener('submit', onSearch);
     document.querySelector('.btn-my-location').addEventListener('click', onSetMyLocation);
-<<<<<<< HEAD
-    document.querySelector('.btn-copy-link').addEventListener('click', onCopyLink);
-    document.querySelector('.btn-user-pos').addEventListener('click', (ev) => {
-        getPosition()
-            .then(pos => {
-                console.log('User position is:', pos.coords);
-                document.querySelector('.user-pos').innerText =
-                    `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
-            })
-            .catch(err => {
-                console.log('err!!!', err);
-            })
-    })
-
-=======
->>>>>>> 0ed5208d7a726980e2ec58eaee765b63ede582c8
 }
 
 
@@ -86,6 +70,7 @@ function renderTable() {
                 tableData +=
                     `<tr>
                 <td>${location.name}</td>
+                <td>${location.temp}</td>
                 <td><button class="btn btn-go" data-id="${location.id}">Go</button></td>
                 <td><button class="btn btn-delete" data-id="${location.id}">Delete</button></td>
             </tr>
@@ -94,7 +79,8 @@ function renderTable() {
             let elTbl = `
         <table style="float:center" class="tbl">
         <tr>
-          <th>Location</th>
+          <th class="location-th">Location</th>
+          <th><i class="fas fa-temperature-low"></i></th>
         </tr>
         ${tableData}
         </table>`;
@@ -133,6 +119,7 @@ function renderWeather(data) {
     const str = `${parseInt(tempCelsius)} temprature from ${parseInt(tempCelsiusMin)} to ${parseInt(tempCelsiusMax)} wind ${data.wind.speed} m/s`
     elWeatherdata.innerText = str;
 }
+
 function addClickListener() {
     const btnsGo = document.querySelectorAll('.btn-go');
     btnsGo.forEach((btn) => {
