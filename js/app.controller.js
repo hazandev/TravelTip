@@ -31,6 +31,7 @@ function addEventListenrs() {
 
     })
     document.querySelector('.search-container').addEventListener('submit', onSearch);
+    document.querySelector('.btn-my-location').addEventListener('click', onSetMyLocation);
     document.querySelector('.btn-user-pos').addEventListener('click', (ev) => {
         getPosition()
             .then(pos => {
@@ -65,9 +66,20 @@ function onSearch(ev) {
             const lnglat = res[0].geometry.location;
             const locationName = res[0].formatted_address;
             locService.setLocation(lnglat, locationName);
+            renderLocationName(locationName);
         })
 }
 
+//Function that changes the header value to the location name
+function renderLocationName(locationName) {
+    const elLocatioHeader = document.querySelector('.location-header');
+    elLocatioHeader.innerText = locationName;
+}
+
+
+function onSetMyLocation(){
+    mapService.currentLocation();
+}
 function renderTable() {
     let tableData = '';
     locService.getLocs()
