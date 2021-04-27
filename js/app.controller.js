@@ -78,7 +78,7 @@ function renderTable() {
             `
             })
             let elTbl = `
-        <table style="float:center">
+        <table style="float:center" class="tbl">
         <tr>
           <th>Location</th>
         </tr>
