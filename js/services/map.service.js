@@ -17,18 +17,15 @@ let labelIndex = 0;
 let gMarker;
 function initMap(lat, lng) {
     setUrl(lat, lng);
-    // location.replace(currentUrl);
-    // console.log(currentUrl.search)
-    console.log('InitMap');
     return _connectGoogleApi()
-        .then(() => {
-            console.log('google available');
+        .then((res) => {
             gMap = new google.maps.Map(
                 document.querySelector('#map'), {
                 center: { lat, lng },
                 zoom: 15
             })
             gMap.addListener('click', (addEventListenerOnMap))
+            return gMap;
         })
 }
 
@@ -76,7 +73,6 @@ function getLatLngUrl() {
 
     if (lat && lng) {
         let latLng = { lat, lng };
-        console.log(latLng);
         return latLng;
     }
     lat = 32.0749831;
@@ -109,7 +105,7 @@ function _connectGoogleApi() {
 
 function getLocationByVal(location) {
     const API_KEY = ' AIzaSyAJxEq1dGkLrZA5cB3DKdS1-OgI5LDRxRE';
-    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${API_KEY}&region=ISR&language=EN`)
+    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?${location}&key=${API_KEY}&region=ISR&language=EN`)
         .then((res) => {
             return res.data.results;
         })

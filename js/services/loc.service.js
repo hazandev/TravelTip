@@ -21,8 +21,9 @@ function getLocs() {
 
 
 function setLocation(lnglat, locationName,weatherObj) {
+    let tempCelsius = parseInt(weatherObj.main.temp - 273.15);
     const location = {
-        id: utilService.makeId(), name: locationName, lat: lnglat.lat, lng: lnglat.lng , weatherObj
+        id: utilService.makeId(), name: locationName, lat: lnglat.lat, lng: lnglat.lng , tempCelsius
     }
     locs.push(location)
     storageService.saveToStorage(KEY, locs)
