@@ -40,7 +40,6 @@ input[name="search"]::placeholder{
     background-color: #333;
     padding: 0.5rem 2rem;
     border-radius: 1rem;
-    width: 15%;
 }
 
 
@@ -49,6 +48,7 @@ input[name="search"]::placeholder{
     align-items: center;
     justify-content: space-between;
     color: #ffc400;
+    padding-inline-end: 1rem ;
 }
 
 
@@ -108,10 +108,8 @@ input[name="search"]::placeholder{
 }
 
 
-
 /* Location */
   
-
 .location-title{
     font-family: 'Noto Sans', sans-serif;
     border-bottom: 2px solid #333;
@@ -126,10 +124,8 @@ input[name="search"]::placeholder{
 
 /* Table */
 
-.tbl{
+table{
     width: 100%;
-    padding: 1rem;
-
 }
 
 .tbl th{

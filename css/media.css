@@ -1,0 +1,56 @@
+
+  @media screen and (max-width: 768px) {
+      html{
+          font-size: 12px;
+      }
+  }
+
+  @media screen and (max-width: 600px) {
+    html{
+        height: 100%;
+        font-size: 8px;
+    }
+    body{
+        height: 100%;
+        overflow-y: scroll;
+    }
+
+    header.header-container{
+        height: 13%;
+    }
+
+    .navbar-header{
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        padding-top: 8px;
+        padding-inline-start: 3rem;
+    }
+
+    .weather-container {
+        width: 100%;
+        background: rgb(44, 43, 43);
+    }
+    .main-container{
+        height: 100%;
+    }
+
+    .location-container{
+        flex-direction: column-reverse;
+    }
+    .map-container{
+        width: 100%;
+    }
+
+    h1.logo{
+        padding: 0;
+        align-self: center;
+    }
+    .weather-data{
+        width: 100%;
+    }
+    .weather-data >*{
+        padding: 4px 8px;
+    }
+  }

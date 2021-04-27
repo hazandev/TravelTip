@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/helper.css">
+    <link rel="stylesheet" href="css/media.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
@@ -19,7 +20,6 @@
     <header class="header-container">
         <nav class="navbar-header flex space-evenly center mb-2">
             <h1 class="logo">Travel - TIP</h1>
-            <div></div>
             <form class="search-container flex center">
                 <input type="search" name="search" list="symbols" placeholder="Location...">
                 <button class="btn btn-search"><i class="fa fa-search"></i></button>
@@ -41,19 +41,21 @@
 
         <div class="location-container flex row">
 
-            <div class="table-container right"></div>
+            <div class="table-container">
+                
+            </div>
 
-            <div class="map-container left">
+            <div class="map-container">
                 <div id="map" style="width: 100%; height: 100%;"></div>
             </div>
         </div>
     </main>
     <footer class="footer-container flex center space-around">
-        <a class="developer-container flex center space-evenly" href="https://github.com/hazandev" target="_blank">
+        <a class="developer-container flex center space-around" href="https://github.com/hazandev" target="_blank">
             <i class="fa-2x fab fa-github"></i>
             <h3>Harel <span> Hazan</span></h3>
         </a>
-        <a class="developer-container flex center space-evenly" href="https://github.com/matan1542
+        <a class="developer-container flex center space-around" href="https://github.com/matan1542
         " target="_blank">
             <i class="fa-2x fab fa-github"></i>
             <h3>Matan <span> Lasry</span></h3>
