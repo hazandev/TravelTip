@@ -13,7 +13,7 @@
         <nav class="navbar-header">
             <h1 class="logo">TravelTip</h1>
             <div></div>
-            <form onsubmit="onSearch(event)" class="search-container">
+            <form class="search-container">
                 <input type="search" name="search" list="symbols" placeholder="Search">
                 <button class="btn btn-search">Go</button>
             </form>
@@ -33,7 +33,8 @@
     <p>You are at: <span class="user-pos"></span></p>
     <p>Locations: <span class="locs"></span></p>
 
-
+    <script src="lib/axios.js"></script>
+    <script src="lib/swal.js"></script>
     <script type="module" src="js/app.controller.js"></script>
 </body>
 

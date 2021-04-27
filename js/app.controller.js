@@ -29,6 +29,7 @@ function addEventListenrs() {
             })
 
     })
+    document.querySelector('.search-container').addEventListener('submit', onSearch);
     document.querySelector('.btn-user-pos').addEventListener('click', (ev) => {
         getPosition()
             .then(pos => {
@@ -51,3 +52,19 @@ function getPosition() {
     })
 }
 
+
+function onSearch(ev) {
+    ev.preventDefault();
+    //Recive the user search value
+    const searchVal = document.querySelector('input[name="search"]').value;
+    //Contains the object value of the search
+    mapService.getLocationByVal(searchVal)
+        .then((res) => {
+            const lnglat = res[0].geometry.location;
+            const locationName = res[0].formatted_address;
+            locService.setLocation(lnglat, locationName);
+        })
+
+
+
+}
