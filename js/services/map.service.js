@@ -1,16 +1,19 @@
-
-
+import { utilService } from "../util/util-service.js";
+import { weatherService } from "./wheather.service.js";
 export const mapService = {
     initMap,
     addMarker,
     panTo,
     getLocationByVal,
-    currentLocation
+    currentLocation,
+    goLocation
 }
+
 let gCurrPos;
 var gMap;
 let labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 let labelIndex = 0;
+let gMarker;
 function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log('InitMap');
     return _connectGoogleApi()
@@ -26,7 +29,7 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
 }
 
 
-function addEventListenerOnMap(mapsMouseEvent){
+function addEventListenerOnMap(mapsMouseEvent) {
     console.log(mapsMouseEvent)
     gCurrPos = mapsMouseEvent.latLng;
     addMarker(mapsMouseEvent.latLng);
@@ -34,13 +37,19 @@ function addEventListenerOnMap(mapsMouseEvent){
 
 function addMarker(loc) {
     var marker = new google.maps.Marker({
+        id: utilService.makeId(),
         labels: labels[labelIndex++ % labels.length],
         position: loc,
         map: gMap
         // title: 'Hello World!'
     });
-    
+    if(gMarker) removeMarker(gMarker);
+    gMarker = marker;
     return marker;
+}
+
+function removeMarker(marker) {
+    marker.setMap(null);
 }
 
 function panTo(lat, lng) {
@@ -82,16 +91,21 @@ function getLocationByVal(location) {
         })
 }
 
+
+function goLocation(location) {
+    initMap(location.lat, location.lng);
+}
+
 function currentLocation() {
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
-                const pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude,
-                };
-                initMap(pos.lat, pos.lng);
-            },
+            const pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+            };
+            initMap(pos.lat, pos.lng);
+        },
             () => {
                 handleLocationError(true, infoWindow, map.getCenter());
             }

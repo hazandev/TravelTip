@@ -1,9 +1,12 @@
 import { storageService } from './storageService.js'
 import { mapService } from './map.service.js'
+import { utilService } from '../util/util-service.js'
 export const locService = {
     getLocs,
     setLocation,
-    getLocation
+    getLocation,
+    getLocationIdx,
+    removeLocation
 }
 
 
@@ -21,18 +24,27 @@ function getLocs() {
 
 function setLocation(lnglat, locationName) {
     const location = {
-        name: locationName, lat: lnglat.lat, lng: lnglat.lng
+        id: utilService.makeId(), name: locationName, lat: lnglat.lat, lng: lnglat.lng
     }
     locs.push(location)
     storageService.saveToStorage(KEY, locs)
     // send request through function for api location 
     mapService.initMap(location.lat, location.lng);
-    //Todo 1 - send request through function for api location 
-    //Todo 2 insert it to the table  and saveToStorage
-    //Todo 3 render table and location on the map
+    //- send request through function for api location 
+    // insert it to the table  and saveToStorage
+    // render table and location on the map
 }
 
-function getLocation(name){
-    return locs[locs.findIndex( loc => {return loc.name === name})];
+function getLocation(id) {
+    return locs.find(loc => { return loc.id === id });
+}
+
+function getLocationIdx(id){
+    return locs.findIndex(loc => { return loc.id === id });
+}
+
+function removeLocation(idx) {
+  locs.splice(idx, 1);
+  storageService.saveToStorage(KEY,locs);
 }
 
