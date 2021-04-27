@@ -34,7 +34,6 @@ function initMap(lat, lng) {
 
 
 function addEventListenerOnMap(mapsMouseEvent) {
-    console.log(mapsMouseEvent)
     gCurrPos = mapsMouseEvent.latLng;
     addMarker(mapsMouseEvent.latLng);
 }
