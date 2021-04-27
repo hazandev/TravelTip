@@ -1,0 +1,86 @@
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto+Condensed&display=swap');
+
+/* Flex */
+.flex{
+    display: flex;
+}
+
+.column{
+    flex-direction: column;
+}
+
+.space-between{
+    justify-content: space-between;
+}
+
+.space-evenly{
+    justify-content: space-evenly;
+}
+
+.left-self{
+    align-self: flex-start;
+}
+
+.center-self{
+    align-self: center;
+}
+
+.right-self{
+    align-self: flex-end;
+}
+
+.left{
+    align-items: flex-start;
+}
+
+.center{
+    align-items: center;
+}
+
+.right{
+    align-items: flex-end;
+}
+
+/* MARGIN */
+.mb-1{
+    margin-bottom: 0.3rem;
+}
+
+.mb-2{
+    margin-bottom: 0.6rem;
+}
+
+.mb3-{
+    margin-bottom: 1rem;
+}
+
+.mb-4{
+    margin-bottom: 2rem;
+}
+
+/* PADDING */
+
+.pb-1{
+    padding-bottom: 0.3rem;
+}
+
+.pb-2{
+    padding-bottom: 0.6rem;
+}
+
+.pb3-{
+    padding-bottom: 1rem;
+}
+
+.pb-4{
+    padding-bottom: 2rem;
+}

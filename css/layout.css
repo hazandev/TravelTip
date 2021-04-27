@@ -1,0 +1,47 @@
+.header-container{
+    width: 100%;
+}
+
+.search-container{
+    padding: 0.5em 4em;
+}
+
+.main-container{
+    max-width: 2000px;
+    width: 100%;
+    height: 85%;
+    padding: 1rem;
+    margin: auto;
+    background: #f0efef;
+}
+  
+.weather-container{
+    width: 100%;
+    height: 10%;
+    border: 2px solid rgb(37, 24, 214);
+}
+
+.location-container{
+    flex-grow: 1;
+    width: 100%;
+}
+
+.map-container{
+    width: 70%;
+    height: 100%;
+    padding: 1rem;
+    border: 2px solid rgb(255, 9, 132);
+}
+
+.table-container{
+    width: 30%;
+    height: 100%;
+    padding: 1rem;
+    border: 2px solid rgb(61, 216, 0);
+}
+
+.footer-container{
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgb(211, 41, 126);
+}

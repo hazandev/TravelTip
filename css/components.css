@@ -1,0 +1,63 @@
+.navbar-header {
+    background: #f39c12;
+}
+.logo {
+    margin: 0;
+    padding-inline-start: 1rem;
+    width: 40%;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 2rem ;
+    color: #fff;
+}
+
+input[name="search"]{
+    padding: 8px 8px;
+    border-radius: 8px;
+    border: 1px #333 solid;
+    margin-inline-end: 0.5rem;
+}
+
+input[name="search"]::placeholder{
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* BTN */
+
+.btn{
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: none;
+}
+
+.btn-search{
+    padding: 8px 8px;
+    background: #f39c12;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 1.5rem ;
+    color: #333;
+    border-bottom: 3px solid #333;
+    border-radius: 5%;
+}
+
+.btn-my-location{
+    background: inherit;
+    border-radius: 0;
+    padding: 0.5rem;
+    border: 3px solid #333;
+}
+  
+
+.location-title{
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.location-title span{
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #f39c12;
+
+}
