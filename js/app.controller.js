@@ -5,11 +5,9 @@ import { weatherService } from './services/wheather.service.js'
 window.onload = onInit;
 
 function onInit() {
-    // var currentUrl = window.location.href;
-    // let params = (new URL(currentUrl)).searchParams;
-    // console.log(params.get('lat'))
     addEventListenrs();
-    mapService.initMap()
+    const latLng = mapService.getLatLngUrl();
+    mapService.initMap(latLng.lat, latLng.lng)
         .then(() => {
             console.log('Map is ready');
             renderTable();
@@ -36,6 +34,7 @@ function addEventListenrs() {
     })
     document.querySelector('.search-container').addEventListener('submit', onSearch);
     document.querySelector('.btn-my-location').addEventListener('click', onSetMyLocation);
+    document.querySelector('.btn-copy-link').addEventListener('click', onCopyLink);
     document.querySelector('.btn-user-pos').addEventListener('click', (ev) => {
         getPosition()
             .then(pos => {
@@ -123,7 +122,22 @@ function renderTable() {
 
 }
 
-
+function onCopyLink() {
+    let currentUrl = new URL(window.location.href);
+    // console.log(currentUrl.href)
+    const copyToClipboard = str => {
+        const el = document.createElement('textarea');
+        el.value = str;
+        el.setAttribute('readonly', currentUrl);
+        el.style.position = 'absolute';
+        el.style.left = '-9999px';
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+      };
+      copyToClipboard(currentUrl)
+}
 function renderWeather(data) {
     const elWeatherdata = document.querySelector('.weather-data');
     const elLocationName = document.querySelector('.location-name');
@@ -132,10 +146,8 @@ function renderWeather(data) {
     let tempCelsius = data.main.temp - 273.15;
     let tempCelsiusMin = data.main.temp_max - 273.15;
     let tempCelsiusMax = data.main.temp_min - 273.15;
-    const temp = tempCelsius - (tempCelsius % 10) + ' ℃';
-    const tempMin = tempCelsiusMin - (tempCelsiusMin % 10) + ' ℃';
-    const tempMax = tempCelsiusMax - (tempCelsiusMax % 10) + ' ℃';
-    const str = `${temp} temprature from ${tempMin} to ${tempMax} wind ${data.wind.speed} m/s`
+
+    const str = `${parseInt(tempCelsius)} temprature from ${parseInt(tempCelsiusMin)} to ${parseInt(tempCelsiusMax)} wind ${data.wind.speed} m/s`
     elWeatherdata.innerText = str;
 }
 function addClickListener() {

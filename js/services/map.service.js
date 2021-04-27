@@ -6,7 +6,8 @@ export const mapService = {
     panTo,
     getLocationByVal,
     currentLocation,
-    goLocation
+    goLocation,
+    getLatLngUrl
 }
 
 let gCurrPos;
@@ -14,7 +15,10 @@ var gMap;
 let labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 let labelIndex = 0;
 let gMarker;
-function initMap(lat = 32.0749831, lng = 34.9120554) {
+function initMap(lat, lng) {
+    setUrl(lat, lng);
+    // location.replace(currentUrl);
+    // console.log(currentUrl.search)
     console.log('InitMap');
     return _connectGoogleApi()
         .then(() => {
@@ -43,7 +47,7 @@ function addMarker(loc) {
         map: gMap
         // title: 'Hello World!'
     });
-    if(gMarker) removeMarker(gMarker);
+    if (gMarker) removeMarker(gMarker);
     gMarker = marker;
     return marker;
 }
@@ -52,6 +56,35 @@ function removeMarker(marker) {
     marker.setMap(null);
 }
 
+
+function setUrl(lat, lng) {
+    let currentUrl = new URL(window.location.href);
+    if (currentUrl.searchParams.get('lat') && currentUrl.searchParams.get('lng')) {
+        currentUrl.searchParams.set('lat', lat);
+        currentUrl.searchParams.set('lng', lng);
+    } else {
+        currentUrl.searchParams.append('lat', lat);
+        currentUrl.searchParams.append('lng', lng);
+    }
+
+    history.pushState(null, null, currentUrl);
+}
+//function that will get the lat and lng from the url
+function getLatLngUrl() {
+    let currentUrl = new URL(window.location.href);
+    let lat = +currentUrl.searchParams.get('lat');
+    let lng = +currentUrl.searchParams.get('lng');
+
+    if (lat && lng) {
+        let latLng = { lat, lng };
+        console.log(latLng);
+        return latLng;
+    }
+    lat = 32.0749831;
+    lng = 34.9120554;
+    let latLng = { lat, lng };
+    return latLng
+}
 function panTo(lat, lng) {
     var laLatLng = new google.maps.LatLng(lat, lng);
     gMap.panTo(laLatLng);
@@ -64,7 +97,7 @@ function _connectGoogleApi() {
     const API_KEY = ' AIzaSyAJxEq1dGkLrZA5cB3DKdS1-OgI5LDRxRE';
     //TODO: Enter your API Key
     var elGoogleApi = document.createElement('script');
-    elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`;
+    elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&region=ISR&language=EN`;
     elGoogleApi.async = true;
     document.body.append(elGoogleApi);
 
@@ -77,7 +110,7 @@ function _connectGoogleApi() {
 
 function getLocationByVal(location) {
     const API_KEY = ' AIzaSyAJxEq1dGkLrZA5cB3DKdS1-OgI5LDRxRE';
-    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${API_KEY}`)
+    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${API_KEY}&region=ISR&language=EN`)
         .then((res) => {
             return res.data.results;
         })
