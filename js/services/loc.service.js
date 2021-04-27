@@ -15,16 +15,14 @@ var locs = storageService.loadFromStorage(KEY) || [];
 
 function getLocs() {
     return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(locs);
-        }, 2000)
+        resolve(locs);
     });
 }
 
 
-function setLocation(lnglat, locationName) {
+function setLocation(lnglat, locationName,weatherObj) {
     const location = {
-        id: utilService.makeId(), name: locationName, lat: lnglat.lat, lng: lnglat.lng
+        id: utilService.makeId(), name: locationName, lat: lnglat.lat, lng: lnglat.lng , weatherObj
     }
     locs.push(location)
     storageService.saveToStorage(KEY, locs)
@@ -39,12 +37,12 @@ function getLocation(id) {
     return locs.find(loc => { return loc.id === id });
 }
 
-function getLocationIdx(id){
+function getLocationIdx(id) {
     return locs.findIndex(loc => { return loc.id === id });
 }
 
 function removeLocation(idx) {
-  locs.splice(idx, 1);
-  storageService.saveToStorage(KEY,locs);
+    locs.splice(idx, 1);
+    storageService.saveToStorage(KEY, locs);
 }
 

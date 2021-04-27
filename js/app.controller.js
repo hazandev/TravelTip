@@ -18,6 +18,7 @@ function onInit() {
 function addEventListenrs() {
     document.querySelector('.search-container').addEventListener('submit', onSearch);
     document.querySelector('.btn-my-location').addEventListener('click', onSetMyLocation);
+    document.querySelector('.btn-copy-link').addEventListener('click', onCopyLink);
 }
 
 
@@ -37,14 +38,13 @@ function onSearch(ev) {
     //Contains the object value of the search
     mapService.getLocationByVal(searchVal)
         .then((res) => {
-
+            console.log(res)
             const lnglat = res[0].geometry.location;
-            const locationName = res[0].formatted_address;
+            const locationName = res[0].address_components[0].long_name;
             weatherService.getWheater(lnglat)
                 .then((values) => {
                     renderWeather(values);
-                    locService.setLocation(lnglat, locationName);
-                    renderLocationName(locationName);
+                    locService.setLocation(lnglat, locationName,values);
                     renderTable();
                 })
 
@@ -52,10 +52,10 @@ function onSearch(ev) {
 }
 
 //Function that changes the header value to the location name
-function renderLocationName(locationName) {
-    const elLocatioHeader = document.querySelector('.location-header');
-    elLocatioHeader.innerText = locationName;
-}
+// function renderLocationName(locationName) {
+//     const elLocatioHeader = document.querySelector('.location-header');
+//     // elLocatioHeader.innerText = locationName;
+// }
 
 
 function onSetMyLocation() {
@@ -87,8 +87,6 @@ function renderTable() {
             document.querySelector('.table-container').innerHTML = elTbl;
             addClickListener();
         });
-
-
 }
 
 function onCopyLink() {
@@ -104,14 +102,13 @@ function onCopyLink() {
         el.select();
         document.execCommand('copy');
         document.body.removeChild(el);
-      };
-      copyToClipboard(currentUrl)
+    };
+    copyToClipboard(currentUrl)
 }
 function renderWeather(data) {
     const elWeatherdata = document.querySelector('.weather-data');
     const elLocationName = document.querySelector('.location-name');
     elLocationName.innerText = data.name;
-    console.log(data)
     let tempCelsius = data.main.temp - 273.15;
     let tempCelsiusMin = data.main.temp_max - 273.15;
     let tempCelsiusMax = data.main.temp_min - 273.15;
@@ -130,6 +127,7 @@ function addClickListener() {
         btn.addEventListener('click', onDeleteLocation);
     })
 }
+
 //When clicking go , This will set the new location
 function onGoLocation(ev) {
     const nameLocation = ev.target.getAttribute('data-id');
