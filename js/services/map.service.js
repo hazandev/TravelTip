@@ -7,9 +7,10 @@ export const mapService = {
     getLocationByVal,
     currentLocation
 }
-
+let gCurrPos;
 var gMap;
-
+let labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+let labelIndex = 0;
 function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log('InitMap');
     return _connectGoogleApi()
@@ -20,16 +21,25 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
                 center: { lat, lng },
                 zoom: 15
             })
-            console.log('Map!', gMap);
+            gMap.addListener('click', (addEventListenerOnMap))
         })
+}
+
+
+function addEventListenerOnMap(mapsMouseEvent){
+    console.log(mapsMouseEvent)
+    gCurrPos = mapsMouseEvent.latLng;
+    addMarker(mapsMouseEvent.latLng);
 }
 
 function addMarker(loc) {
     var marker = new google.maps.Marker({
+        labels: labels[labelIndex++ % labels.length],
         position: loc,
-        map: gMap,
-        title: 'Hello World!'
+        map: gMap
+        // title: 'Hello World!'
     });
+    
     return marker;
 }
 
