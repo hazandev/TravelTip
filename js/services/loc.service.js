@@ -22,8 +22,13 @@ function setLocation(lnglat, locationName) {
         name: locationName, lat: lnglat.lng, lng: lnglat.lat
     }
     locs.push(location)
-    storageService.saveToStorage(KEY, locs)
+    storageService.saveToStorage(KEY, locs);
     //Todo 1 - send request through function for api location 
     //Todo 2 insert it to the table  and saveToStorage
     //Todo 3 render table and location on the map
 }
+
+function getLocation(name){
+    return locs[locs.findIndex( loc => {return loc.name === name})];
+}
+

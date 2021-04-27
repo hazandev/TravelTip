@@ -8,6 +8,7 @@ function onInit() {
     mapService.initMap()
         .then(() => {
             console.log('Map is ready');
+            renderTable();
         })
         .catch(() => console.log('Error: cannot init map'));
 }
@@ -64,4 +65,41 @@ function onSearch(ev) {
             const locationName = res[0].formatted_address;
             locService.setLocation(lnglat, locationName);
         })
+}
+
+function renderTable() {
+    let tableData = '';
+    locService.getLocs()
+    .then(locs => {
+        locs.forEach( location => {
+            tableData += 
+            `<tr>
+                <td>${location.name}</td>
+                <td>${location.lat}</td>
+                <td>${location.lng}</td>
+                <td><button onclick ="onGoLocation()">Go</button></td>
+                <td><button onclick ="onDeleteLocation()">Delete</button></td>
+            </tr>
+            `
+        })
+        let elTbl = `
+        <table style="float:right">
+        <tr>
+          <th>Name</th>
+          <th>Location lat</th>
+          <th>Location lng</th>
+        </tr>
+        ${tableData}
+        </table>`;
+        document.querySelector('.table-container').innerHTML = elTbl; 
+    });
+}
+
+function onGoLocation(){
+console.log('aa');
+}
+
+function onDeleteLocation(){
+    console.log('bb');
+
 }
