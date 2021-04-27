@@ -78,6 +78,7 @@ function renderLocationName(locationName) {
 
 function onSetMyLocation(){
     mapService.currentLocation();
+}
 function renderTable() {
     let tableData = '';
     locService.getLocs()
