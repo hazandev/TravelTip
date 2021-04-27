@@ -16,24 +16,9 @@ function onInit() {
 }
 
 function addEventListenrs() {
-    document.querySelector('.btn-pan').addEventListener('click', (ev) => {
-        console.log('Panning the Map');
-        mapService.panTo(35.6895, 139.6917);
-    })
-    document.querySelector('.btn-add-marker').addEventListener('click', (ev) => {
-        console.log('Adding a marker');
-        mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 });
-    })
-    document.querySelector('.btn-get-locs').addEventListener('click', (ev) => {
-        locService.getLocs()
-            .then(locs => {
-                console.log('Locations:', locs)
-                document.querySelector('.locs').innerText = JSON.stringify(locs)
-            })
-
-    })
     document.querySelector('.search-container').addEventListener('submit', onSearch);
     document.querySelector('.btn-my-location').addEventListener('click', onSetMyLocation);
+<<<<<<< HEAD
     document.querySelector('.btn-copy-link').addEventListener('click', onCopyLink);
     document.querySelector('.btn-user-pos').addEventListener('click', (ev) => {
         getPosition()
@@ -47,6 +32,8 @@ function addEventListenrs() {
             })
     })
 
+=======
+>>>>>>> 0ed5208d7a726980e2ec58eaee765b63ede582c8
 }
 
 
@@ -99,19 +86,15 @@ function renderTable() {
                 tableData +=
                     `<tr>
                 <td>${location.name}</td>
-                <td>${location.lat}</td>
-                <td>${location.lng}</td>
                 <td><button class="btn btn-go" data-id="${location.id}">Go</button></td>
                 <td><button class="btn btn-delete" data-id="${location.id}">Delete</button></td>
             </tr>
             `
             })
             let elTbl = `
-        <table style="float:right">
+        <table style="float:center" class="tbl">
         <tr>
-          <th>Name</th>
-          <th>Location lat</th>
-          <th>Location lng</th>
+          <th>Location</th>
         </tr>
         ${tableData}
         </table>`;

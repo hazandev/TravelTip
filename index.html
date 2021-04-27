@@ -6,40 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TravelTip</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/helper.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
 </head>
 
 <body>
-    
-    <header>
-        <nav class="navbar-header">
-            <h1 class="logo">TravelTip</h1>
+    <div class="main-screen"></div>
+    <header class="header-container">
+        <nav class="navbar-header flex space-evenly center mb-2">
+            <h1 class="logo">Travel - TIP</h1>
             <div></div>
-            <form class="search-container">
-                <input type="search" name="search" list="symbols" placeholder="Search">
-                <button class="btn btn-search">Go</button>
+            <form class="search-container flex center">
+                <input type="search" name="search" list="symbols" placeholder="Location...">
+                <button class="btn btn-search"><i class="fa fa-search"></i></button>
             </form>
-            <button class=" btn btn-my-location">My Location</button>
+            <button class=" btn btn-my-location"><i class="fas fa-2x fa-map-marker-alt"></i></button>
         </nav>
     </header>
-    <div class="wheather">
-        <h1 class="location-name"></h1>
-        <h4 class="weather-data"></h4>
-        <button class="btn btn-copy-link">Copy Link</button>
-    </div>
-    <div class="container">
+    <main class="main-container flex column center mb-2">
+        <h1 class="left-self mb-2 location-title">Location: <span>Tel Aviv</span> </h1>
 
-    </div>
-    <h1 >Location: <span class="location-header">כפר סירקין</span> </h1>
-    <div id="map" style="width: 100%; height: 400px;"></div>
-    <button class="btn-add-marker">Add Marker Speific Location</button>
-    <button class="btn-user-pos">Get User Position</button>
-    <button class="btn-get-locs">Get Locations</button>
-    <button class="btn-pan">Pan Map to Tokyo</button>
+        <div class="weather-container mb-2">
+            <h1 class="location-name"></h1>
+            <h4 class="weather-data"></h4>
+            <button class="btn btn-copy-link">Copy Link</button>
+        </div>
 
-    <p>You are at: <span class="user-pos"></span></p>
-    <p>Locations: <span class="locs"></span></p>
-    <div class="table-container"></div>
-   <script src="lib/clipboard.min.js"></script>
+        <div class="location-container flex row">
+
+            <div class="table-container right"></div>
+
+            <div class="map-container left">
+                <div id="map" style="width: 100%; height: 100%;"></div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer-container flex center space-around">
+        <a class="developer-container flex center space-evenly" href="https://github.com/hazandev" target="_blank">
+            <i class="fa-2x fab fa-github"></i>
+            <h3>Harel <span> Hazan</span></h3>
+        </a>
+        <a class="developer-container flex center space-evenly" href="https://github.com/matan1542
+        " target="_blank">
+            <i class="fa-2x fab fa-github"></i>
+            <h3>Matan <span> Lasry</span></h3>
+        </a>
+    </footer>
     <script src="lib/axios.js"></script>
     <script src="lib/swal.js"></script>
     <script type="module" src="js/app.controller.js"></script>
