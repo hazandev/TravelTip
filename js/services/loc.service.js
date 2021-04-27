@@ -1,12 +1,12 @@
+import { storageService } from './storageService.js'
 export const locService = {
     getLocs,
-    searchLocation
+    setLocation
 }
 
-var locs = [
-    { name: 'Loc1', lat: 32.047104, lng: 34.832384 }, 
-    { name: 'Loc2', lat: 32.047201, lng: 34.832581 }
-]
+
+const KEY = 'locations';
+var locs = storageService.loadFromStorage(KEY) || [];
 
 function getLocs() {
     return new Promise((resolve, reject) => {
@@ -17,7 +17,12 @@ function getLocs() {
 }
 
 
-function searchLocation(location){
+function setLocation(lnglat, locationName) {
+    const location = {
+        name: locationName, lat: lnglat.lng, lng: lnglat.lat
+    }
+    locs.push(location)
+    storageService.saveToStorage(KEY, locs)
     //Todo 1 - send request through function for api location 
     //Todo 2 insert it to the table  and saveToStorage
     //Todo 3 render table and location on the map

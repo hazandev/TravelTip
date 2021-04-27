@@ -64,7 +64,4 @@ function onSearch(ev) {
             const locationName = res[0].formatted_address;
             locService.setLocation(lnglat, locationName);
         })
-
-
-
 }
