@@ -113,8 +113,12 @@ function renderWeather(data) {
     let tempCelsiusMin = data.main.temp_max - 273.15;
     let tempCelsiusMax = data.main.temp_min - 273.15;
 
-    const str = `${parseInt(tempCelsius)} temprature from ${parseInt(tempCelsiusMin)} to ${parseInt(tempCelsiusMax)} wind ${data.wind.speed} m/s`
-    elWeatherdata.innerText = str;
+    document.querySelector('.temp-now label').innerText =  `${parseInt(tempCelsius)}°`;
+
+    document.querySelector('.temp-night label').innerText =  `${parseInt(tempCelsiusMin)}°`;
+
+    document.querySelector('.temp-morning label').innerText =  `${parseInt(tempCelsiusMax)}°`;
+    document.querySelector('.wind label').innerText = `${data.wind.speed}`;
 }
 
 function addClickListener() {

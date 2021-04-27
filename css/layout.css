@@ -22,14 +22,15 @@
 }
   
 .weather-container{
-    width: 100%;
+    width: 70%;
     height: 10%;
-    border: 2px solid rgb(52, 52, 59);
-    border-radius: 8px;
+    border-bottom: 2px solid rgb(52, 52, 59);
+    padding: 1rem;
 }
 
 .location-container{
     flex-grow: 1;
+    height: 80%;
     width: 100%;
 }
 
@@ -43,7 +44,8 @@
     width: 40%;
     height: 100%;
     padding: 1rem;
-    border-right: 6px solid #333;
+    border-right: 3px solid rgb(255, 255, 255);
+    overflow-y: auto;
 }
 
 .footer-container{

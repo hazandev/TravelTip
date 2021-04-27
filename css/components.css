@@ -27,6 +27,53 @@ input[name="search"]::placeholder{
     color: #333;
 }
 
+/* WEATHER */
+
+.weather-data{
+    width: 100%;
+}
+
+.weather-data >*{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #333;
+    padding: 0.5rem 2rem;
+    border-radius: 1rem;
+    width: 15%;
+}
+
+
+.weather-data i{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #ffc400;
+}
+
+
+.weather-data label{
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    color: #ffc400;
+}
+
+.weather-data .fa-temperature-high{
+    color: #fff;
+}
+
+.weather-data .fa-moon{
+    color: rgb(153, 153, 153)
+}
+
+.weather-data .fa-wind{
+    color: rgb(127, 153, 209)
+}
+
+
+
+
+
 /* BTN */
 
 .btn{
@@ -52,12 +99,23 @@ input[name="search"]::placeholder{
     background: inherit;
     border-radius: 0;
     padding: 0.5rem;
-    border: 3px solid #333;
 }
+
+.btn-copy-link{
+    background: inherit;
+    border: 3px solid #333;
+    padding: 0.5rem 1rem;
+}
+
+
+
+/* Location */
   
 
 .location-title{
     font-family: 'Noto Sans', sans-serif;
+    border-bottom: 2px solid #333;
+    padding-bottom: 0.5rem;
 }
 
 .location-title span{
@@ -78,7 +136,6 @@ input[name="search"]::placeholder{
     font-size: 2rem;
     color: #333;
     font-family: 'Noto Sans', sans-serif;
-    padding-top: 2rem;
 }
 
 .tbl th:first-child{

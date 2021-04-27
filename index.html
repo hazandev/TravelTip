@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/helper.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
 </head>
 
@@ -26,14 +27,18 @@
                 <button class="btn btn-search"><i class="fa fa-search"></i></button>
             </form>
             <button class=" btn btn-my-location"><i class="fas fa-2x fa-map-marker-alt"></i></button>
+            <button class="btn btn-copy-link">Copy Link</button>
         </nav>
     </header>
     <main class="main-container flex column center mb-2">
-        <h1 class="left-self mb-2 location-title">Location: <span class="location-name">Tel Aviv</span> </h1>
-
-        <div class="weather-container mb-2">
-            <h4 class="weather-data"></h4>
-            <button class="btn btn-copy-link">Copy Link</button>
+        <h1 class="left-self mb-2 location-title">Location: <span class="location-name"></span> </h1>
+        <div class="weather-container flex center  mb-4">
+            <div class="weather-data flex space-evenly">
+                <div class="temp-now "><i class="fas fa-2x fa-temperature-high"></i><label></label></div>
+                <div class="temp-morning"><i class="fas fa-2x fa-moon"></i><label></label></div>
+                <div class="temp-night"><i class="fas fa-2x fa-sun"></i><label></label></div>
+                <div class="wind"><i class="fas fa-2x fa-wind"></i><label></label></div>
+            </div>
         </div>
 
         <div class="location-container flex row">
