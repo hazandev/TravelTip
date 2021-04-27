@@ -72,19 +72,15 @@ function renderTable() {
                 tableData +=
                     `<tr>
                 <td>${location.name}</td>
-                <td>${location.lat}</td>
-                <td>${location.lng}</td>
                 <td><button class="btn btn-go" data-id="${location.id}">Go</button></td>
                 <td><button class="btn btn-delete" data-id="${location.id}">Delete</button></td>
             </tr>
             `
             })
             let elTbl = `
-        <table style="float:right">
+        <table style="float:center">
         <tr>
-          <th>Name</th>
-          <th>Location lat</th>
-          <th>Location lng</th>
+          <th>Location</th>
         </tr>
         ${tableData}
         </table>`;
