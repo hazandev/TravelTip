@@ -7,12 +7,8 @@ window.onload = onInit;
 function onInit() {
     addEventListenrs();
     const latLng = mapService.getLatLngUrl();
-    mapService.initMap(latLng.lat, latLng.lng)
-        .then(() => {
-            console.log('Map is ready');
-            renderTable();
-        })
-        .catch(() => console.log('Error: cannot init map'));
+    const str = `latlng=${latLng.lat},${latLng.lng}`
+    loctaionRender(str);
 }
 
 function addEventListenrs() {
@@ -24,7 +20,6 @@ function addEventListenrs() {
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
 function getPosition() {
-    console.log('Getting Pos');
     return new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject)
     })
@@ -36,19 +31,8 @@ function onSearch(ev) {
     //Recive the user search value
     const searchVal = document.querySelector('input[name="search"]').value;
     //Contains the object value of the search
-    mapService.getLocationByVal(searchVal)
-        .then((res) => {
-            console.log(res)
-            const lnglat = res[0].geometry.location;
-            const locationName = res[0].address_components[0].long_name;
-            weatherService.getWheater(lnglat)
-                .then((values) => {
-                    renderWeather(values);
-                    locService.setLocation(lnglat, locationName,values);
-                    renderTable();
-                })
-
-        })
+    const str = `address=${searchVal}`
+    loctaionRender(str);
 }
 
 //Function that changes the header value to the location name
@@ -62,7 +46,6 @@ function onSetMyLocation() {
     mapService.currentLocation();
 }
 function renderTable() {
-    console.log('entered')
     let tableData = '';
     locService.getLocs()
         .then(locs => {
@@ -70,7 +53,7 @@ function renderTable() {
                 tableData +=
                     `<tr>
                 <td>${location.name}</td>
-                <td>${location.temp}</td>
+                <td>${location.tempCelsius }°</td>
                 <td><button class="btn btn-go" data-id="${location.id}">Go</button></td>
                 <td><button class="btn btn-delete" data-id="${location.id}">Delete</button></td>
             </tr>
@@ -88,10 +71,23 @@ function renderTable() {
             addClickListener();
         });
 }
+//gets the location by value or by lat and lng and sets the website accordingly with the correct data
+function loctaionRender(value){
+    mapService.getLocationByVal(value)
+    .then((res) => {
+        const lnglat = res[0].geometry.location;
+        const locationName = res[0].address_components[1].long_name;
+        weatherService.getWheater(lnglat)
+            .then((values) => {
+                renderWeather(values);
+                locService.setLocation(lnglat, locationName, values);
+                renderTable();
+            })
+    })
+}
 
 function onCopyLink() {
     let currentUrl = new URL(window.location.href);
-    // console.log(currentUrl.href)
     const copyToClipboard = str => {
         const el = document.createElement('textarea');
         el.value = str;
@@ -118,7 +114,7 @@ function renderWeather(data) {
     document.querySelector('.temp-night label').innerText =  `${parseInt(tempCelsiusMin)}°`;
 
     document.querySelector('.temp-morning label').innerText =  `${parseInt(tempCelsiusMax)}°`;
-    document.querySelector('.wind label').innerText = `${data.wind.speed}`;
+    document.querySelector('.wind label').innerText = `${parseInt(data.wind.speed * 1.6093444)} km/h`;
 }
 
 function addClickListener() {
@@ -137,7 +133,6 @@ function onGoLocation(ev) {
     const nameLocation = ev.target.getAttribute('data-id');
     const location = locService.getLocation(nameLocation);
     mapService.goLocation(location);
-
 }
 
 function onDeleteLocation(ev) {
