@@ -5,6 +5,7 @@
 
 .header-container{
     width: 100%;
+    height: 8%;
 }
 
 .search-container{
@@ -14,7 +15,7 @@
 .main-container{
     max-width: 1900px;
     width: 100%;
-    height: 85%;
+    height: 83%;
     padding: 1rem;
     margin: auto;
     background: #f0efef;
@@ -23,7 +24,8 @@
 .weather-container{
     width: 100%;
     height: 10%;
-    border: 2px solid rgb(37, 24, 214);
+    border: 2px solid rgb(52, 52, 59);
+    border-radius: 8px;
 }
 
 .location-container{
@@ -35,18 +37,22 @@
     width: 70%;
     height: 100%;
     padding: 1rem;
-    border: 2px solid rgb(255, 9, 132);
 }
 
 .table-container{
     width: 30%;
     height: 100%;
     padding: 1rem;
-    border: 2px solid rgb(61, 216, 0);
+    border-right: 6px solid #333;
 }
 
 .footer-container{
     width: 100%;
-    height: 100%;
-    border: 2px solid rgb(211, 41, 126);
+    height: 9%;
+    background: #f0efef;
+    border-top: 4px solid  #f39c12;
+}
+
+.developer-container{
+    width: 10%;
 }

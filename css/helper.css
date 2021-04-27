@@ -9,6 +9,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto+Condensed&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@200&display=swap');
+
 /* Flex */
 .flex{
     display: flex;
@@ -24,6 +28,10 @@
 
 .space-evenly{
     justify-content: space-evenly;
+}
+
+.space-around{
+    justify-content: space-around;
 }
 
 .left-self{
