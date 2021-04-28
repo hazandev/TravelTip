@@ -83,6 +83,7 @@ input[name="search"]::placeholder{
     cursor: pointer;
     border-radius: 4px;
     border: none;
+    transition: .3s;
 }
 
 .btn-search{
@@ -99,14 +100,24 @@ input[name="search"]::placeholder{
     background: inherit;
     border-radius: 0;
     padding: 0.5rem;
+    transition: .3s;
+}
+
+.btn-my-location:hover{
+    background: #fff;
+    transform: scale(1.5);
 }
 
 .btn-copy-link{
     background: inherit;
     border: 3px solid #333;
     padding: 0.5rem 1rem;
+    transition: .3s;
 }
 
+.btn-copy-link:hover{
+    background: #fff;
+}
 
 /* Location */
   
