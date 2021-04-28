@@ -103,7 +103,6 @@ function onCopyLink() {
     copyToClipboard(currentUrl)
 }
 function renderWeather(data) {
-    const elWeatherdata = document.querySelector('.weather-data');
     const elLocationName = document.querySelector('.location-name');
     elLocationName.innerText = data.name;
     let tempCelsius = data.main.temp - 273.15;
