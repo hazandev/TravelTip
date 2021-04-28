@@ -49,6 +49,7 @@ function renderTable() {
     let tableData = '';
     locService.getLocs()
         .then(locs => {
+            locs.reverse();
             locs.forEach(location => {
                 tableData +=
                     `<tr>
